@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="사이트 아이콘">
+  <rect width="64" height="64" rx="14" fill="#2f5d8c"/>
+  <!-- 펼친 책 모양. 원하는 그림으로 자유롭게 바꿔도 됩니다. -->
+  <path d="M12 20c7-3 13-3 19 1v25c-6-4-12-4-19-1z" fill="#ffffff" opacity=".95"/>
+  <path d="M52 20c-7-3-13-3-19 1v25c6-4 12-4 19-1z" fill="#ffffff" opacity=".72"/>
+</svg>

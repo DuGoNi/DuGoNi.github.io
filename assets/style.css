@@ -1,0 +1,317 @@
+/* ==========================================================================
+   개인 홈페이지 스타일시트
+   색·간격·글꼴은 아래 :root 변수만 바꾸면 사이트 전체에 반영됩니다.
+   ========================================================================== */
+
+:root {
+  --bg:        #ffffff;
+  --bg-soft:   #f5f7f9;
+  --text:      #1b1f24;
+  --text-soft: #5c6672;
+  --line:      #e2e6eb;
+  --accent:    #2f5d8c;
+  --accent-bg: #eaf1f8;
+
+  --wrap: 760px;
+  --radius: 10px;
+
+  --font: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", system-ui, sans-serif;
+  --font-mono: "Cascadia Mono", "D2Coding", Consolas, monospace;
+
+  color-scheme: light;
+}
+
+/* 다크 모드: OS 설정을 따르되, 우측 상단 토글이 항상 이긴다 */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:        #14171a;
+    --bg-soft:   #1c2024;
+    --text:      #e6e9ec;
+    --text-soft: #9aa4b0;
+    --line:      #2b3138;
+    --accent:    #7fb3e0;
+    --accent-bg: #1e2a36;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:        #14171a;
+  --bg-soft:   #1c2024;
+  --text:      #e6e9ec;
+  --text-soft: #9aa4b0;
+  --line:      #2b3138;
+  --accent:    #7fb3e0;
+  --accent-bg: #1e2a36;
+  color-scheme: dark;
+}
+
+/* --- 기본 --------------------------------------------------------------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 16.5px;
+  line-height: 1.75;
+  word-break: keep-all;      /* 한글 줄바꿈을 어절 단위로 */
+  overflow-wrap: break-word;
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+a:hover { text-decoration-thickness: 2px; }
+
+img { max-width: 100%; height: auto; }
+
+.wrap {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.skip {
+  position: absolute;
+  left: -9999px;
+}
+.skip:focus {
+  left: 12px; top: 12px;
+  z-index: 10;
+  background: var(--bg);
+  padding: 8px 14px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+}
+
+/* --- 상단 바 ------------------------------------------------------------ */
+
+.site-header {
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 62px;
+  flex-wrap: wrap;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.site-nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.site-nav a {
+  color: var(--text-soft);
+  text-decoration: none;
+  font-size: 0.94rem;
+  padding: 6px 10px;
+  border-radius: 7px;
+}
+.site-nav a:hover { background: var(--bg-soft); color: var(--text); }
+.site-nav a[aria-current="page"] {
+  color: var(--accent);
+  background: var(--accent-bg);
+  font-weight: 600;
+}
+
+.theme-toggle {
+  margin-left: 6px;
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  color: var(--text-soft);
+  cursor: pointer;
+  font-size: 0.95rem;
+  line-height: 1;
+  padding: 7px 9px;
+}
+.theme-toggle:hover { background: var(--bg-soft); color: var(--text); }
+
+/* --- 본문 --------------------------------------------------------------- */
+
+main { padding: 48px 0 72px; }
+
+h1, h2, h3 {
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  margin: 0 0 12px;
+}
+
+h1 { font-size: 1.95rem; }
+h2 {
+  font-size: 1.28rem;
+  margin-top: 52px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+h3 { font-size: 1.05rem; margin-top: 28px; }
+
+p { margin: 0 0 16px; }
+
+.lead {
+  font-size: 1.08rem;
+  color: var(--text-soft);
+  margin-bottom: 28px;
+}
+
+.muted { color: var(--text-soft); }
+.small { font-size: 0.9rem; }
+
+/* 첫 화면 프로필 */
+.hero {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+.hero-photo {
+  width: 128px;
+  flex: 0 0 128px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--bg-soft);
+}
+.hero-body { flex: 1 1 auto; min-width: 0; }
+.hero h1 { margin-bottom: 6px; }
+.affil {
+  color: var(--text-soft);
+  margin: 0 0 14px;
+}
+
+/* 링크 줄 (이메일 · GitHub · CV …) */
+.links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+}
+.links a {
+  display: inline-block;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px 13px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: var(--text-soft);
+}
+.links a:hover { border-color: var(--accent); color: var(--accent); }
+
+/* 목록형 항목 (논문 · 강의 · 글) */
+.entries { list-style: none; padding: 0; margin: 0; }
+
+.entry {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+}
+.entry:last-child { border-bottom: none; }
+
+.entry-title {
+  font-weight: 600;
+  margin: 0 0 4px;
+  font-size: 1.02rem;
+}
+.entry-title a { color: var(--text); text-decoration: none; }
+.entry-title a:hover { color: var(--accent); text-decoration: underline; }
+
+.entry-meta {
+  color: var(--text-soft);
+  font-size: 0.9rem;
+  margin: 0 0 6px;
+}
+.entry-desc { margin: 0; color: var(--text-soft); font-size: 0.95rem; }
+
+.entry-links {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 0.88rem;
+}
+
+/* 연도 배지 */
+.year {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text-soft);
+  background: var(--bg-soft);
+  border-radius: 5px;
+  padding: 1px 7px;
+  margin-right: 8px;
+}
+
+/* 태그 */
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.tag {
+  font-size: 0.8rem;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border-radius: 5px;
+  padding: 2px 8px;
+}
+
+/* 안내 상자 */
+.note {
+  background: var(--bg-soft);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 14px 18px;
+  margin: 24px 0;
+  font-size: 0.95rem;
+  color: var(--text-soft);
+}
+.note p:last-child { margin-bottom: 0; }
+
+/* --- 바닥글 ------------------------------------------------------------- */
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 26px 0 40px;
+  color: var(--text-soft);
+  font-size: 0.88rem;
+}
+.site-footer p { margin: 0; }
+
+/* --- 좁은 화면 ---------------------------------------------------------- */
+
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .wrap { padding: 0 18px; }
+  main { padding: 34px 0 56px; }
+  h1 { font-size: 1.65rem; }
+
+  .header-inner { min-height: 56px; padding: 8px 0; }
+  .site-nav { margin-left: 0; width: 100%; gap: 2px; }
+  .site-nav a { padding: 5px 8px; font-size: 0.9rem; }
+  .theme-toggle { margin-left: auto; }
+
+  .hero { flex-direction: column; gap: 18px; }
+  .hero-photo { width: 96px; flex-basis: 96px; }
+}
