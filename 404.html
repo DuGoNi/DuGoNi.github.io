@@ -3,35 +3,43 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>페이지를 찾을 수 없습니다 — [이름]</title>
+<title>404 — [이름]</title>
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+KR:wght@400;500&display=swap">
 <link rel="stylesheet" href="/assets/style.css">
 <script src="/assets/theme.js"></script>
 </head>
 <body>
 
-<header class="site-header">
-  <div class="wrap header-inner">
-    <a class="brand" href="/">[이름]</a>
-    <nav class="site-nav" aria-label="주요 메뉴">
-      <a href="/index.html">소개</a>
-      <a href="/research.html">연구</a>
-      <a href="/teaching.html">강의</a>
-      <a href="/notes.html">자료</a>
-      <button class="theme-toggle" type="button">☾</button>
-    </nav>
-  </div>
+<div class="wrap" id="main">
+
+<nav class="nav" aria-label="주요 메뉴">
+  <a href="/index.html">소개</a>
+  <a href="/research.html">연구</a>
+  <a href="/teaching.html">강의</a>
+  <a href="/notes.html">자료</a>
+  <a class="home" href="/index.html">[이름]</a>
+</nav>
+
+<header>
+  <h1>찾으시는 페이지가 없습니다</h1>
+  <p class="orig">Not found</p>
+  <p class="meta"><b>Error</b>404</p>
 </header>
 
-<main id="main" class="wrap">
-  <h1>404</h1>
-  <p class="lead">찾으시는 페이지가 없습니다. 주소가 바뀌었거나 삭제된 것 같습니다.</p>
-  <p><a href="/">첫 화면으로 돌아가기</a></p>
-</main>
+<p class="lead">
+  주소가 바뀌었거나 삭제된 페이지입니다.
+  <a href="/">첫 화면</a>에서 다시 찾아보세요.
+</p>
 
-<footer class="site-footer">
-  <div class="wrap"><p>© 2026 [이름]</p></div>
+<footer>
+  <p>© 2026 [이름]</p>
 </footer>
 
+</div>
+
+<button id="theme" type="button" title="밝기">◐</button>
 </body>
 </html>

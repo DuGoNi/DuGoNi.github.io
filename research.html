@@ -6,89 +6,92 @@
 <title>연구 — [이름]</title>
 <meta name="description" content="[이름]의 연구 주제, 논문, 발표 목록.">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+KR:wght@400;500&display=swap">
 <link rel="stylesheet" href="assets/style.css">
 <script src="assets/theme.js"></script>
 </head>
 <body>
 <a class="skip" href="#main">본문 바로가기</a>
 
-<header class="site-header">
-  <div class="wrap header-inner">
-    <a class="brand" href="index.html">[이름]</a>
-    <nav class="site-nav" aria-label="주요 메뉴">
-      <a href="index.html">소개</a>
-      <a href="research.html" aria-current="page">연구</a>
-      <a href="teaching.html">강의</a>
-      <a href="notes.html">자료</a>
-      <button class="theme-toggle" type="button">☾</button>
-    </nav>
-  </div>
+<div class="wrap" id="main">
+
+<nav class="nav" aria-label="주요 메뉴">
+  <a href="index.html">소개</a>
+  <a href="research.html" aria-current="page">연구</a>
+  <a href="teaching.html">강의</a>
+  <a href="notes.html">자료</a>
+  <a class="home" href="index.html">[이름]</a>
+</nav>
+
+<header>
+  <h1>연구</h1>
+  <p class="orig">Research</p>
 </header>
 
-<main id="main" class="wrap">
+<p class="lead">
+  [지금 붙들고 있는 문제를 두세 문장으로. 목록 위에 이 설명이 있으면
+  개별 논문 제목만 훑는 것보다 훨씬 잘 읽힙니다.]
+</p>
 
-  <h1>연구</h1>
-  <p class="lead">
-    [지금 붙들고 있는 문제를 두세 문장으로. 목록 위에 이 설명이 있으면
-    개별 논문 제목만 훑는 것보다 훨씬 잘 읽힙니다.]
-  </p>
+<!-- ✏️ 진행 중 ──────────────────────────────────────────────── -->
+<h2><span class="en">In progress</span>진행 중</h2>
+<ul class="list">
+  <li>
+    <span class="yr">2026—</span>
+    <p class="t">[연구 주제 제목]</p>
+    <p class="s">[공동 연구자가 있다면 이름]</p>
+    <p class="d">[무엇을 묻고 있고, 어떻게 접근하는지 두세 문장. 결과가 아직
+      없어도 문제 설정만 잘 써두면 충분히 읽을 가치가 있습니다.]</p>
+  </li>
+</ul>
 
-  <!-- ✏️ 진행 중인 연구 ----------------------------------------------- -->
-  <h2>진행 중</h2>
-  <ul class="entries">
-    <li class="entry">
-      <p class="entry-title">[연구 주제 제목]</p>
-      <p class="entry-meta">[기간] · [공동 연구자가 있다면 이름]</p>
-      <p class="entry-desc">
-        [무엇을 묻고 있고, 어떻게 접근하는지 두세 문장. 결과가 아직 없어도
-        문제 설정만 잘 써두면 충분히 읽을 가치가 있습니다.]
-      </p>
-    </li>
-  </ul>
+<!-- ✏️ 논문 ────────────────────────────────────────────────────
+     .s 에는 학술지 이름을 그대로(원문) 적습니다 — 옮기지 않은 고유명입니다. -->
+<h2><span class="en">Publications</span>논문</h2>
+<ul class="list">
+  <li>
+    <span class="yr">2026</span>
+    <p class="t">[논문 제목]</p>
+    <p class="s">[저자 목록] · [학술지 또는 학회명]</p>
+    <p class="d">[한 줄 요약 — 이 논문이 밝힌 것.]</p>
+    <a class="go" href="[PDF 경로]">PDF</a>
+    <a class="go" href="[DOI 링크]">DOI</a>
+    <a class="go" href="[코드·데이터 링크]">Code</a>
+  </li>
+  <li>
+    <span class="yr">2025</span>
+    <p class="t">[논문 제목]</p>
+    <p class="s">[저자 목록] · [학술지 또는 학회명]</p>
+    <p class="d">[한 줄 요약.]</p>
+    <a class="go" href="[PDF 경로]">PDF</a>
+  </li>
+</ul>
 
-  <!-- ✏️ 논문 ---------------------------------------------------------- -->
-  <h2>논문</h2>
-  <ul class="entries">
-    <li class="entry">
-      <p class="entry-title">[논문 제목]</p>
-      <p class="entry-meta"><span class="year">2026</span>[저자 목록] · <em>[학술지 또는 학회명]</em></p>
-      <p class="entry-desc">[한 줄 요약 — 이 논문이 밝힌 것.]</p>
-      <p class="entry-links">
-        <a href="[PDF 경로]">PDF</a>
-        <a href="[DOI 또는 출판사 링크]">DOI</a>
-        <a href="[코드/데이터 링크]">코드</a>
-      </p>
-    </li>
-    <li class="entry">
-      <p class="entry-title">[논문 제목]</p>
-      <p class="entry-meta"><span class="year">2025</span>[저자 목록] · <em>[학술지 또는 학회명]</em></p>
-      <p class="entry-desc">[한 줄 요약.]</p>
-      <p class="entry-links">
-        <a href="[PDF 경로]">PDF</a>
-      </p>
-    </li>
-  </ul>
+<!-- ✏️ 발표 ──────────────────────────────────────────────────── -->
+<h2><span class="en">Talks</span>발표</h2>
+<ul class="list">
+  <li>
+    <span class="yr">2026.06</span>
+    <p class="t">[발표 제목]</p>
+    <p class="s">[학회·세미나 이름], [장소]</p>
+    <p class="d">[구두 발표 / 포스터]</p>
+  </li>
+  <li>
+    <span class="yr">2025.11</span>
+    <p class="t">[발표 제목]</p>
+    <p class="s">[학회·세미나 이름], [장소]</p>
+    <p class="d">[구두 발표 / 포스터]</p>
+  </li>
+</ul>
 
-  <!-- ✏️ 발표 ---------------------------------------------------------- -->
-  <h2>발표</h2>
-  <ul class="entries">
-    <li class="entry">
-      <p class="entry-title">[발표 제목]</p>
-      <p class="entry-meta"><span class="year">2026</span>[학회/세미나 이름], [장소] · [구두 발표 / 포스터]</p>
-    </li>
-    <li class="entry">
-      <p class="entry-title">[발표 제목]</p>
-      <p class="entry-meta"><span class="year">2025</span>[학회/세미나 이름], [장소] · [구두 발표 / 포스터]</p>
-    </li>
-  </ul>
-
-</main>
-
-<footer class="site-footer">
-  <div class="wrap">
-    <p>© 2026 [이름] · <a href="mailto:[이메일]">[이메일]</a></p>
-  </div>
+<footer>
+  <p>© 2026 [이름] · <a href="mailto:[이메일]">[이메일]</a></p>
 </footer>
 
+</div>
+
+<button id="theme" type="button" title="밝기">◐</button>
 </body>
 </html>
