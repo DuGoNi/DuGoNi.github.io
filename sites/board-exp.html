@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+:root{--ink:21 20 15;--fg:rgb(var(--ink));--mut:#7C7869;--far:#A8A294;--line:#E7E5DD;--acc:#2B3A4A;--u:30px;--gut:170px;--gap:30px;--pad:10px;--side:calc(var(--gut) + var(--gap) + var(--pad));--measure:660px;--mono:"IBM Plex Mono",Consolas,monospace;--sans:"Franklin Gothic Demi Cond","Arial Narrow",sans-serif;--orig:"Palatino Linotype",Constantia,Georgia,serif;--decay:linear-gradient(90deg,rgb(var(--ink)/1),rgb(var(--ink)/.74) 10%,rgb(var(--ink)/.55) 20%,rgb(var(--ink)/.41) 30%,rgb(var(--ink)/.3) 40%,rgb(var(--ink)/.22) 50%,rgb(var(--ink)/.17) 60%,rgb(var(--ink)/.12) 70%,rgb(var(--ink)/.09) 80%,rgb(var(--ink)/.07) 90%,rgb(var(--ink)/.05));--decay-soft:linear-gradient(90deg,rgb(var(--ink)/.34),rgb(var(--ink)/.19) 20%,rgb(var(--ink)/.1) 40%,rgb(var(--ink)/.055) 60%,rgb(var(--ink)/.03) 80%,rgb(var(--ink)/.015))}
+*{box-sizing:border-box}html{font-family:"Noto Serif KR",Batang,serif;font-size:15.5px}
+body{margin:0;background:#fff;color:var(--fg);line-height:var(--u);word-break:keep-all;-webkit-font-smoothing:antialiased}
+.wrap{max-width:calc(var(--measure) + 2*var(--side));margin:0 auto;padding:calc(var(--u)*1.4) var(--side) calc(var(--u)*1.6)}
+p{margin:0 0 var(--u);max-width:var(--measure);text-wrap:pretty}
+.g{display:grid;grid-template-columns:var(--gut) minmax(0,1fr);column-gap:var(--gap);margin-left:calc(-1*(var(--gut) + var(--gap)))}
+.journal{grid-column:2;font-family:var(--sans);font-size:.68rem;letter-spacing:.36em;text-transform:uppercase;color:var(--mut);line-height:var(--u)}
+header h1{grid-column:2;font-size:2.1rem;font-weight:500;line-height:calc(var(--u)*1.5);letter-spacing:-.014em;margin:calc(var(--u)*.35) 0 calc(var(--u)*.2)}
+.orig{grid-column:1;grid-row:2;align-self:end;text-align:right;margin:0 0 calc(var(--u)*.4);font-family:var(--orig);font-style:italic;font-size:.82rem;line-height:1.62;color:var(--far)}
+header::after{content:"";grid-column:1/-1;grid-row:3;height:1px;margin-top:calc(var(--u)*.5);background:var(--decay)}
+.lead{margin-top:calc(var(--u)*1.1)}.lead p{font-size:1.02rem}
+.lbl{grid-column:1;grid-row:1;align-self:start;text-align:right;margin:0;font-family:var(--sans);font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--mut);line-height:calc(var(--u)*.95)}
+.g>*:not(.lbl):not(.orig){grid-column:2}
+.board{margin-top:calc(var(--u)*.9)}
+.row{display:grid;grid-template-columns:var(--gut) minmax(0,1fr) auto;column-gap:var(--gap);margin-left:calc(-1*(var(--gut) + var(--gap)));padding:calc(var(--u)*.32) 0;text-decoration:none;color:inherit;border-bottom:1px solid rgb(var(--ink)/.07);align-items:baseline}
+a.row:hover{background:rgb(var(--ink)/.035)}
+.row .yr{text-align:right;font-family:var(--mono);font-size:.67rem;color:var(--far)}
+.row .t{font-size:.95rem}
+.row .t i{font-family:var(--orig);font-style:italic;font-size:.85em;color:var(--far);margin-left:.5em}
+a.row .t{border-bottom:1px dotted rgb(var(--ink)/.25)}
+a.row:hover .t{border-bottom-color:rgb(var(--ink)/.6)}
+.row .go{font-family:var(--sans);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--far);padding-right:4px}
+.row.mute .t{color:var(--mut)}
+.empty{font-family:var(--orig);font-style:italic;font-size:.85rem;color:var(--far);padding:calc(var(--u)*.3) 0}
+.seal{margin:calc(var(--u)*1.5) 0 0 calc(-1*(var(--gut) + var(--gap)));padding-top:calc(var(--u)*.6);position:relative;font-family:var(--mono);font-size:.64rem;color:var(--mut);line-height:calc(var(--u)*.68)}
+.seal::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:var(--decay-soft)}
+.seal p{margin:0 0 0 calc(var(--gut) + var(--gap))}
+@media (max-width:880px){:root{--gut:0px;--gap:0px;--pad:18px;--side:18px}.g,.row{display:block;margin-left:0}.orig,.lbl,.row .yr{text-align:left;margin:0 0 .2em}.seal{margin-left:0}.seal p{margin-left:0}}
+</style></head><body><div class="wrap">
+<header class="g"><span class="journal">박두곤 — 연구와 강의</span><p class="orig">Laboratory Notes</p><h1>실험</h1></header>
+<div class="lead g"><h2 class="lbl">기록</h2><p>잰 것을 다시 재는 자리입니다. 날짜와 조건, 그리고 예상과 어긋난 곳만 적습니다 — 어긋남이 다음 실험의 좌표가 됩니다.</p></div>
+<div class="board" id="board"><div class="empty">목록을 불러오는 중입니다…</div></div>
+<div class="seal"><p>실험 — 어긋남을 적는 일</p></div>
+</div>
+<script>
+fetch('https://dugoni.github.io/boards/exp.json?v='+Date.now()).then(r=>r.json()).then(rows=>{
+  const b=document.getElementById('board'); b.innerHTML='';
+  if(!rows.length){b.innerHTML='<div class="empty">첫 기록이 앉을 자리입니다.</div>';return}
+  rows.forEach(e=>{
+    const el=document.createElement(e.href?'a':'div');
+    el.className='row'+(e.href?'':' mute');
+    if(e.href){el.href=e.href;el.target='_blank';el.rel='noopener'}
+    const yr=document.createElement('span');yr.className='yr';yr.textContent=e.yr||'';
+    const t=document.createElement('span');t.className='t';t.textContent=e.t||'';
+    if(e.s){const i=document.createElement('i');i.textContent=e.s;t.appendChild(i)}
+    const go=document.createElement('span');go.className='go';go.textContent=e.href?'읽기 ↗':'';
+    el.append(yr,t,go); b.appendChild(el);
+  });
+}).catch(()=>{document.getElementById('board').innerHTML='<div class="empty">목록을 불러오지 못했습니다 — 잠시 후 새로고침하세요.</div>'});
+</script>
+</body></html>

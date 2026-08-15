@@ -15,8 +15,8 @@ import sys, json, shutil, subprocess, pathlib, datetime
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 BASE = 'https://dugoni.github.io'
-BOARDS = {'lecture': 'lectures', 'news': 'news', 'diary': 'diary', 'paper': 'papers'}
-DEST = {'lecture': 'lectures', 'news': 'posts', 'diary': 'posts', 'paper': 'posts'}
+BOARDS = {'lecture': 'lectures', 'news': 'news', 'diary': 'diary', 'paper': 'papers', 'exp': 'exp'}
+DEST = {'lecture': 'lectures', 'news': 'posts', 'diary': 'posts', 'paper': 'posts', 'exp': 'posts'}
 
 
 def die(msg):
@@ -62,7 +62,7 @@ def main(argv):
     if kind == 'note':
         if len(argv) < 3:
             die('note <게시판:news|diary|papers|lectures> "한 줄"')
-        board = argv[1] if argv[1] in ('news', 'diary', 'papers', 'lectures') else BOARDS.get(argv[1])
+        board = argv[1] if argv[1] in ('news', 'diary', 'papers', 'lectures', 'exp') else BOARDS.get(argv[1])
         if not board:
             die('모르는 게시판: ' + argv[1])
         p, rows = load(board)
