@@ -1,97 +1,64 @@
-<!doctype html>
-<html lang="ko">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>[PDG] — 연구 · 강의</title>
-<meta name="description" content="[이름]의 개인 홈페이지. 연구, 강의, 자료를 정리합니다.">
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+KR:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/style.css">
-<script src="assets/theme.js"></script>
-</head>
-<body>
-<a class="skip" href="#main">본문 바로가기</a>
-
-<div class="wrap" id="main">
-
-<nav class="nav" aria-label="주요 메뉴">
-  <a href="index.html" aria-current="page">소개</a>
-  <a href="research.html">연구</a>
-  <a href="teaching.html">강의</a>
-  <a href="notes.html">자료</a>
-  <a class="home" href="index.html">[이름]</a>
-</nav>
-
-<!-- ✏️ 머리 ─────────────────────────────────────────────────────
-     난외(왼쪽 기둥)에는 영문만 앉는다. 한국어는 오른쪽 단에.
-     사진을 쓰려면 assets/photo.jpg 로 넣고 아래 주석을 푸세요. -->
-<header>
-  <span class="journal">[영문 소속]</span>
-  <!-- <img class="portrait" src="assets/photo.jpg" alt="[이름] 프로필 사진"> -->
-  <h1>[이름]</h1>
-  <p class="orig">[영문 이름]<br>[영문 학과·과정]</p>
-  <p class="meta">
-    <b>Email</b><a href="mailto:[이메일]">[이메일]</a>
-    <span class="sep">·</span>
-    <b>GitHub</b><a href="https://github.com/DuGoNi">DuGoNi</a>
-    <span class="sep">·</span>
-    <b>CV</b><a href="[CV 파일 경로]">PDF</a>
-  </p>
-</header>
-
-<!-- ✏️ 소개 ─────────────────────────────────────────────────────
-     첫 글자는 CSS가 알아서 크게 떨군다. 따로 표시할 것 없다.
-     다만 ::first-letter는 앞에 붙은 문장부호까지 함께 끌고 간다 —
-     이 문단만은 대괄호로 시작하지 않는다. -->
-<div class="abstract">
-  <h2>소개</h2>
-  <p>여기에 한 문단으로 지금 무엇을 하고 있는지 씁니다. 방문한 사람이 30초
-    안에 이 사람이 어떤 문제를 다루는지 알 수 있게. 첫 글자가 크게 떨어지므로
-    문장을 괄호나 따옴표로 시작하지 않는 편이 좋습니다.</p>
-  <p>두 번째 문단에는 어떤 방법으로 접근하는지, 앞으로 하고 싶은 일 같은 것을
-    씁니다. 세 문단을 넘기지 않는 편이 읽힙니다.</p>
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>박두곤 — 서고</title>
+<meta name="description" content="박두곤의 글 저장소 — 강의·논문·소식·일기의 정본 목록. 본채는 sites.google.com/view/parkdugon.">
+<meta property="og:title" content="박두곤 — 서고">
+<meta property="og:description" content="강의·논문·소식·일기의 정본 목록.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext x='16' y='24' font-size='22' font-family='serif' text-anchor='middle' fill='%23151410'%3E%ED%88%AC%3C/text%3E%3C/svg%3E">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+:root{--ink:21 20 15;--fg:rgb(var(--ink));--mut:#7C7869;--far:#A8A294;--line:#E7E5DD;--acc:#2B3A4A;--u:32px;
+--mono:"IBM Plex Mono",Consolas,monospace;--sans:"Franklin Gothic Demi Cond","Arial Narrow",sans-serif;--orig:"Palatino Linotype",Constantia,Georgia,serif;
+--decay:linear-gradient(90deg,rgb(var(--ink)/1),rgb(var(--ink)/.74) 10%,rgb(var(--ink)/.55) 20%,rgb(var(--ink)/.41) 30%,rgb(var(--ink)/.3) 40%,rgb(var(--ink)/.22) 50%,rgb(var(--ink)/.17) 60%,rgb(var(--ink)/.12) 70%,rgb(var(--ink)/.09) 80%,rgb(var(--ink)/.07) 90%,rgb(var(--ink)/.05));
+--decay-soft:linear-gradient(90deg,rgb(var(--ink)/.34),rgb(var(--ink)/.19) 20%,rgb(var(--ink)/.1) 40%,rgb(var(--ink)/.055) 60%,rgb(var(--ink)/.03) 80%,rgb(var(--ink)/.015))}
+*{box-sizing:border-box}
+html{font-family:"Noto Serif KR",Batang,serif;font-size:16.5px}
+body{margin:0;background:#fff;color:var(--fg);line-height:var(--u);word-break:keep-all;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:calc(var(--u)*2) 24px calc(var(--u)*3)}
+.journal{font-family:var(--sans);font-size:.68rem;letter-spacing:.36em;text-transform:uppercase;color:var(--mut)}
+h1{font-size:2rem;font-weight:500;line-height:calc(var(--u)*1.4);letter-spacing:-.014em;margin:calc(var(--u)*.4) 0 calc(var(--u)*.2)}
+.home{font-family:var(--mono);font-size:.7rem;color:var(--mut);margin-bottom:calc(var(--u)*.9);position:relative;padding-bottom:calc(var(--u)*.6)}
+.home::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--decay)}
+.home a{color:var(--acc);text-decoration:none;border-bottom:1px solid var(--line)}
+h2{font-family:var(--sans);font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:var(--mut);font-weight:400;margin:calc(var(--u)*1.3) 0 calc(var(--u)*.4)}
+.row{display:flex;gap:18px;align-items:baseline;padding:calc(var(--u)*.28) 0;text-decoration:none;color:inherit;border-bottom:1px solid rgb(var(--ink)/.07)}
+a.row:hover{background:rgb(var(--ink)/.035)}
+.row .yr{flex:0 0 6.5em;text-align:right;font-family:var(--mono);font-size:.67rem;color:var(--far)}
+.row .t{font-size:.95rem}
+a.row .t{border-bottom:1px dotted rgb(var(--ink)/.25)}
+.row .t i{font-family:var(--orig);font-style:italic;font-size:.85em;color:var(--far);margin-left:.5em}
+.row.mute .t{color:var(--mut)}
+.empty{font-family:var(--orig);font-style:italic;font-size:.85rem;color:var(--far);padding:calc(var(--u)*.3) 0}
+.seal{margin-top:calc(var(--u)*1.6);padding-top:calc(var(--u)*.6);position:relative;font-family:var(--mono);font-size:.64rem;color:var(--mut)}
+.seal::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:var(--decay-soft)}
+@media (max-width:600px){.row{display:block}.row .yr{text-align:left}}
+</style></head><body><div class="wrap">
+<span class="journal">박두곤 — 연구와 강의 · 글 저장소</span>
+<h1>서고</h1>
+<div class="home">본채는 <a href="https://sites.google.com/view/parkdugon">sites.google.com/view/parkdugon</a> — 여기는 글의 정본이 꽂히는 서고입니다.</div>
+<div id="shelves"><div class="empty">목록을 불러오는 중입니다…</div></div>
+<div class="seal">© 2026 박두곤 · 조판 «투과» — 흰 바탕은 장벽이고, 잉크는 통과해 나온 것이다</div>
 </div>
-
-<!-- ✏️ 관심 주제 ────────────────────────────────────────────────
-     영문 병기가 있으면 <span class="en">에 넣으세요. 없으면 지우면 됩니다. -->
-<div class="keypoints">
-  <h2>관심 주제</h2>
-  <ul>
-    <li>[주제 1] <span class="en">Topic one</span></li>
-    <li>[주제 2] <span class="en">Topic two</span></li>
-    <li>[주제 3] <span class="en">Topic three</span></li>
-  </ul>
-</div>
-
-<!-- ✏️ 최근 소식 ────────────────────────────────────────────────
-     왼쪽 기둥의 연도만 훑으면 연표가 되고, 오른쪽만 읽으면 목록이 됩니다. -->
-<h2><span class="en">News</span>최근 소식</h2>
-<ul class="list">
-  <li>
-    <span class="yr">2026.08</span>
-    <p class="t">[소식 내용을 한 줄로.]</p>
-  </li>
-  <li>
-    <span class="yr">2026.06</span>
-    <p class="t">[예: ○○ 학회에서 포스터 발표]</p>
-    <p class="s">[학회 원문 이름을 적을 자리]</p>
-  </li>
-  <li>
-    <span class="yr">2026.03</span>
-    <p class="t">[예: ○○ 과정 시작]</p>
-  </li>
-</ul>
-
-<footer>
-  <p>© 2026 [이름] · <a href="mailto:[이메일]">[이메일]</a></p>
-  <p>이 페이지는 <a href="https://github.com/DuGoNi/DuGoNi.github.io">GitHub</a>에 있습니다.</p>
-</footer>
-
-</div>
-
-<button id="theme" type="button" title="밝기">◐</button>
-</body>
-</html>
+<script>
+(async () => {
+  const shelves = [['강의','boards/lectures.json'],['논문','boards/papers.json'],['소식','boards/news.json'],['일기','boards/diary.json']];
+  const root = document.getElementById('shelves'); root.innerHTML = '';
+  for (const [name, url] of shelves) {
+    const h = document.createElement('h2'); h.textContent = name; root.appendChild(h);
+    try {
+      const rows = await fetch(url + '?v=' + Date.now()).then(r => r.json());
+      if (!rows.length) { const d = document.createElement('div'); d.className = 'empty'; d.textContent = '첫 글이 앉을 자리입니다.'; root.appendChild(d); continue; }
+      for (const e of rows) {
+        const el = document.createElement(e.href ? 'a' : 'div');
+        el.className = 'row' + (e.href ? '' : ' mute');
+        if (e.href) { el.href = e.href; }
+        const yr = document.createElement('span'); yr.className = 'yr'; yr.textContent = e.yr || '';
+        const t = document.createElement('span'); t.className = 't'; t.textContent = e.t || '';
+        if (e.s) { const i = document.createElement('i'); i.textContent = e.s; t.appendChild(i); }
+        el.append(yr, t); root.appendChild(el);
+      }
+    } catch { const d = document.createElement('div'); d.className = 'empty'; d.textContent = '목록을 불러오지 못했습니다.'; root.appendChild(d); }
+  }
+})();
+</script>
+</body></html>

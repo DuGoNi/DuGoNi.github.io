@@ -33,20 +33,25 @@ def save(p, rows):
 
 
 def commit(msg, push):
-    subprocess.run(['git', '-C', str(ROOT), 'add', 'lectures', 'posts', 'boards'], check=True)
+    # push 직전에 링크 점검 — 죽은 링크를 실은 채 나가지 않는다
+    chk = subprocess.run([sys.executable, str(ROOT / '_tools' / 'check.py')])
+    if chk.returncode != 0:
+        die('링크 점검 실패 — 위 목록을 고친 뒤 다시 실행')
+    subprocess.run(['git', '-C', str(ROOT), 'add', '-A'], check=True)
     r = subprocess.run(['git', '-C', str(ROOT), 'commit', '-m', msg])
     if r.returncode != 0:
         print('커밋할 변경 없음 — 이미 최신.')
     if push:
         subprocess.run(['git', '-C', str(ROOT), 'push'], check=True)
-        print('push 완료 — 몇 분 안에 사이트에 반영된다.')
+        print('push 완료 — 몇 분 안에 반영된다. 게시된 주소를 브라우저에서 한 번 확인할 것.')
     else:
         print('남은 일: git push')
 
 
 def main(argv):
-    push = '--push' in argv
-    argv = [a for a in argv if a != '--push']
+    # 기본이 push다 — "남은 일"을 만들지 않는다. 막고 싶을 때만 --no-push.
+    push = '--no-push' not in argv
+    argv = [a for a in argv if a not in ('--push', '--no-push')]
     yr = None
     if '--yr' in argv:
         i = argv.index('--yr'); yr = argv[i + 1]; del argv[i:i + 2]

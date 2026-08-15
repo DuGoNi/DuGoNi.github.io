@@ -7,3 +7,5 @@ desktop.ini
 *~
 *.swp
 .vscode/
+
+__pycache__/

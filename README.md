@@ -1,86 +1,32 @@
-# 개인 홈페이지
+# 박두곤 — 연구와 강의 · 저장소
 
-https://dugoni.github.io
+- **본채(사이트)**: https://sites.google.com/view/parkdugon (Google Sites)
+- **서고(이 저장소)**: https://dugoni.github.io — 글·강의의 정본이 사는 곳. 루트가 전체 색인이다.
+- 사이트 게시판(강의·논문·소식·일기)과 홈 «최근 소식»은 `boards/*.json`을 fetch해 그린다.
+  **글을 얹을 때 Sites 편집기를 열 일이 없다.**
 
-GitHub Pages로 배포하는 정적 홈페이지. 빌드 도구도 의존성도 없다.
-파일을 고쳐서 push하면 1~2분 뒤 사이트에 반영된다.
+## 글 얹기 (전부 한 줄)
 
-## 조판
-
-강의 셸의 «투과 · TRANSMISSION»을 그대로 옮겼다. 규칙은 셋뿐이다.
-
-- 흰 바탕은 빈 곳이 아니라 **장벽**이다
-- 잉크는 **통과해 나온 것**이다
-- **색은 쓰지 않는다** — 잉크의 농도만이 유일한 변수다
-
-옮기면서 정한 것은 하나다. 논문에서 난외(왼쪽 190px 기둥)에 앉던
-«통과하지 못한 것»이 여기서는 **영문 표기**다. 이름·소속·절 제목·학회명이
-한국어로 건너오고, 원래의 영문은 옅어진 채 난외에 남는다.
-
-세로 간격은 전부 34px(`--u`)의 배수다. 절 사이의 세선은 선형 페이드가 아니라
-exp(−3x)로 잦아든다. 화면이 1000px보다 좁아지면 난외가 접히고, 옅어진 영문은
-제자리로 돌아와 본문 위에 앉는다.
-
-## 구조
-
-```
-index.html      소개 — 머리 · 소개(첫 글자 장식) · 관심 주제 · 최근 소식
-research.html   연구 — 진행 중 · 논문 · 발표
-teaching.html   강의 — 이번 학기 · 이전 강의
-notes.html      자료 — 글 · 정리 자료
-404.html        없는 주소로 들어왔을 때
-assets/
-  style.css     조판 전부. 맨 위 :root의 변수만 바꾸면 전체가 따라온다
-  theme.js      밝기 손잡이(오른쪽 아래)
-  favicon.svg   탭 아이콘
-.nojekyll       GitHub이 Jekyll을 돌리지 않게 하는 표시 (지우지 말 것)
+```bash
+py _tools/pub.py lecture "1.1.2 강의.html" 1-1-2 "미분이라는 관점" "Phase I 언어 · Part 1 수학"
+py _tools/pub.py news   "글.html" 2026-08-20-topic "제목" "부제(선택)"
+py _tools/pub.py diary  "글.html" 2026-08-20 "제목"
+py _tools/pub.py paper  "글.html" paper-slug "제목" "원제(선택)"
+py _tools/pub.py note   news "글 없는 한 줄 소식"
 ```
 
-파일(PDF·PPT)은 `files/` 폴더를 만들어 넣고 `files/이름.pdf` 로 링크한다.
+- 복사 → `boards/*.json` 갱신 → 링크 점검(`_tools/check.py`) → 커밋 → **push까지 자동**. 막으려면 `--no-push`.
+- 글 본문은 `_tools/post-template.html`을 복사해 쓰면 «투과» 조판이 맞는다.
+- slug 규약: 영문·숫자·하이픈만. 강의는 번호(`1-1-2`), 글은 날짜(`YYYY-MM-DD[-주제]`). **한번 공개한 slug는 바꾸지 않는다** — 공유된 링크가 죽는다.
 
-## 쓰는 마크업
+## 폴더
 
-| 자리 | 클래스 | 하는 일 |
-|---|---|---|
-| 머리 | `.journal` `.orig` `.meta` | `.orig`는 난외로 간다(영문) |
-| 소개 | `.abstract` | 난외에 표지, 첫 글자가 크게 떨어진다 |
-| 관심 주제 | `.keypoints` | 감쇠선 둘 사이에 놓인다 |
-| 절 제목 | `<h2><span class="en">English</span>한국어</h2>` | `.en`이 있으면 난외로 간다 |
-| 목록 | `.list` > `.yr` `.t` `.s` `.d` `.go` | 연도는 난외, 내용은 본문 단 |
-| 들머리 | `.lead` | 목록 바로 앞의 한 문단 |
-| 도판 | `.figwrap` + `.fig` | 좌우 난외로 넘쳐 나간다 |
-| 곁말 | `.note` | 왼쪽에 세로선 하나 |
+- `lectures/` 강의 정본 · `posts/` 글 정본 · `boards/` 게시판 색인 JSON
+- `sites/` **구글 사이트 임베드 소스의 정본** — 편집기보다 여기가 먼저다 (`sites/README.md`)
+- `_tools/` pub.py(게시) · check.py(링크 점검) · post-template.html(글 틀)
 
-`.abstract`의 첫 문단은 대괄호나 따옴표로 시작하지 않는다 —
-`::first-letter`가 앞의 문장부호까지 끌고 가서 장식이 깨진다.
+## 규칙 (3년 뒤의 나에게)
 
-## 고치는 법
-
-`[대괄호]`로 감싼 부분이 채워 넣을 자리다. 이름과 이메일은 다섯 파일 전부에
-들어 있으므로, 이름을 바꿀 때는 전부 고쳐야 한다.
-
-색·자간·난외 폭·한 줄 길이는 `assets/style.css` 맨 위 `:root`에 모여 있다.
-`--u` 하나를 건드리면 조판 전체의 호흡이 같이 바뀐다.
-
-글꼴은 Noto Serif KR과 IBM Plex Mono를 Google Fonts에서 받아 쓴다.
-외부 의존을 없애려면 각 HTML의 `fonts.googleapis.com` 줄을 지우면 되고,
-그러면 방문자 컴퓨터에 깔린 명조(바탕·Apple SD 명조)로 떨어진다.
-
-## 로컬에서 미리 보기
-
-```
-py -m http.server 8766 --directory .
-```
-
-브라우저에서 `http://localhost:8766` 을 연다.
-`404.html`은 절대경로를 쓰므로 서버로 열어야 제대로 나온다.
-
-## 배포
-
-```
-git add -A
-git commit -m "내용 수정"
-git push
-```
-
-푸시하면 GitHub이 알아서 다시 올린다.
+- 한 글은 한 곳: 밖에 알릴 것은 **소식**, 하루의 기록은 **일기**, 잰 것과 어긋남은 **실험**, 강의·번역은 **학습**.
+- 연구 항목을 접을 때는 페이지를 지우지 말고 **이전연구**로 옮겨 적는다 — 닫힌 결론과 «원인 아님» 목록째.
+- 분기마다 한 번: `git push` 되어 있는지, 사이트 게시판이 JSON을 제대로 무는지, `py _tools/check.py` 통과하는지 본다.
